@@ -1,18 +1,22 @@
 {
   "private": true,
-  "name": "nicholashine",
-  "description": "nicholashine.com",
+  "name": "ourweddingplanner",
+  "description": "ourweddingplanner.online",
   "version": "0.1.0",
   "domains": [
-    "nicholashine.com"
+    "ourweddingplanner.online"
   ],
-  "homepage": "https://github.com/karlito-who-else/nicholashine",
+  "homepage": "https://github.com/ourweddingplanner/website",
   "author": {
-    "name": "Karl Podger",
-    "email": "karl.podger@primeordinal.com",
-    "url": "https://github.com/karlito-who-else/nicholashine"
+    "name": "The Our Wedding Planner Team",
+    "email": "developers@ourweddingplanner.online",
+    "url": "https://github.com/ourweddingplanner/website"
   },
   "contributors": [
+    {
+      "name": "John-Michael Velasquez",
+      "email": "johnmichael.developer@gmail.com"
+    },
     {
       "name": "Karl Podger",
       "email": "karl.podger@primeordinal.com"
@@ -23,15 +27,18 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/karlito-who-else/nicholashine"
+    "url": "https://github.com/ourweddingplanner/website"
   },
   "bugs": {
-    "url": "https://github.com/karlito-who-else/nicholashine/issues"
+    "url": "https://github.com/ourweddingplanner/website/issues"
   },
   "dependencies": {},
   "devDependencies": {
     "eslint": "^3.14.1",
     "standard": "^8.6.0"
   },
-  "main": "index.html"
+  "main": "index.html",
+  "scripts": {
+    "deploy": "polymer build && firebase deploy"
+  }
 }

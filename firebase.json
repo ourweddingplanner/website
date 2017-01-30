@@ -9,6 +9,16 @@
         "source": "**",
         "destination": "/index.html"
       }
+    ],
+    "ignore": [
+      ".eslint.json",
+      ".travis.yml",
+      "firebase.json",
+      "polymer.json",
+      "LICENSE",
+      "README.md",
+      "**/.*",
+      "**/node_modules/**"
     ]
   }
 }

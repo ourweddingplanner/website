@@ -35,10 +35,15 @@
   "dependencies": {},
   "devDependencies": {
     "eslint": "^3.14.1",
+    "eslint-config-google": "^0.7.1",
+    "eslint-plugin-html": "^1.7.0",
     "standard": "^8.6.0"
   },
   "main": "index.html",
   "scripts": {
-    "deploy": "polymer build && firebase deploy"
+    "deploy": "polymer build && firebase deploy",
+    "lint": "eslint . --ext js,html --ignore-path .gitignore",
+    "serve": "pushd public && polymer serve --hostname ourweddingplanner.local && popd",
+    "test": "npm run lint && polymer test"
   }
 }

@@ -1,26 +1,11 @@
-# Polymer App Toolbox - Starter Kit
+# Our Wedding Planner - Website
 
-[![Build Status](https://travis-ci.org/PolymerElements/polymer-starter-kit.svg?branch=master)](https://travis-ci.org/PolymerElements/polymer-starter-kit)
+[![Build Status](https://travis-ci.org/ourweddingplanner/website.svg?branch=master)](https://travis-ci.org/ourweddingplanner/website)
 
-This template is a starting point for building apps using a drawer-based
-layout. The layout is provided by `app-layout` elements.
-
-This template, along with the `polymer-cli` toolchain, also demonstrates use
-of the "PRPL pattern" This pattern allows fast first delivery and interaction with
-the content at the initial route requested by the user, along with fast subsequent
-navigation by pre-caching the remaining components required by the app and
-progressively loading them on-demand as the user navigates through the app.
-
-The PRPL pattern, in a nutshell:
-
-* **Push** components required for the initial route
-* **Render** initial route ASAP
-* **Pre-cache** components for remaining routes
-* **Lazy-load** and progressively upgrade next routes on-demand
-
-### Migrating from Polymer Starter Kit v1?
-
-[Check out our blog post that covers what's changed in PSK2 and how to migrate!](https://www.polymer-project.org/1.0/blog/2016-08-18-polymer-starter-kit-or-polymer-cli.html)
+Our Wedding Planner helps couples to enjoy their wedding day by taking the 
+headache out of the organisation and planning of suppliers, venues, 
+photographers, guest lists, gift wish lists, gifts received, etc. 
+as well as to help manage costs.
 
 ### Setup
 
@@ -31,11 +16,19 @@ First, install [Polymer CLI](https://github.com/Polymer/polymer-cli) using
 
     npm install -g polymer-cli
 
-##### Initialize project from template
+Then, install [Bower](https://bower.io/) using
+[npm](https://www.npmjs.com)
 
-    mkdir my-app
-    cd my-app
-    polymer init starter-kit
+    npm install -g bower
+
+Finally, install [Firebase CLI](https://firebase.google.com/docs/cli/) using
+[npm](https://www.npmjs.com)
+
+    npm install -g firebase-tools
+
+##### Set active Firebase project
+
+    firebase use
 
 ### Start the development server
 
@@ -85,3 +78,9 @@ application. Each new demand-loaded fragment should be added to the list of
 `fragments` in the included `polymer.json` file. This will ensure those
 components and their dependencies are added to the list of pre-cached components
 and will be included in the `bundled` build.
+
+### Deploy
+
+This command deploys the `build/unbundled` folder to Firebase.
+
+    npm run deploy

@@ -50,6 +50,7 @@
     "electron": "electron .",
     "lint": "eslint . --ext js,html --ignore-path .gitignore",
     "serve": "pushd public && polymer serve --port 8088 && popd",
+    "setup": "pushd public && bower install && popd",
     "test": "npm run lint && polymer test"
   }
 }

@@ -14,6 +14,8 @@ node_js:
   - '4'
 before_script:
   - npm install -g bower polymer-cli
-  - bower install
+  - pushd public && bower install && popd
 script:
   - xvfb-run npm test
+after_success:
+  - firebase deploy --token ${FIREBASE_TOKEN}

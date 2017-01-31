@@ -8,10 +8,10 @@ Code distributed by Google as part of the polymer project is also
 subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
 -->
 
-<link rel="import" href="../bower_components/polymer/polymer.html">
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="my-view2">
+<dom-module id="our-wedding-planner-planner">
   <template>
     <style include="shared-styles">
       :host {
@@ -30,8 +30,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    Polymer({
-      is: 'my-view2',
-    });
+    class UniversalShiftPlanner extends Polymer.Element {
+      static get is() { return 'our-wedding-planner-planner'; }
+      static get config() {
+        return {
+          /* properties, observers meta data */
+        }
+      }
+      constructor() {
+        super();
+      }
+      connectedCallback() {
+        super.connectedCallback();
+      }
+    }
+
+    customElements.define(UniversalShiftPlanner.is, UniversalShiftPlanner);
   </script>
 </dom-module>

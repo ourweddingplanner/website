@@ -1,0 +1,263 @@
+<!--
+@license
+Copyright (c) 2016 The Polymer Project Authors. All rights reserved.
+This code may only be used under the BSD style license found at http://polymer.github.io/LICENSE.txt
+The complete set of authors may be found at http://polymer.github.io/AUTHORS.txt
+The complete set of contributors may be found at http://polymer.github.io/CONTRIBUTORS.txt
+Code distributed by Google as part of the polymer project is also
+subject to an additional IP rights grant found at http://polymer.github.io/PATENTS.txt
+-->
+
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer/app-drawer.html">
+<link rel="import" href="../bower_components/app-layout/app-drawer-layout/app-drawer-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-header/app-header.html">
+<link rel="import" href="../bower_components/app-layout/app-header-layout/app-header-layout.html">
+<link rel="import" href="../bower_components/app-layout/app-scroll-effects/app-scroll-effects.html">
+<link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
+<link rel="import" href="../bower_components/app-route/app-location.html">
+<link rel="import" href="../bower_components/app-route/app-route.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<!--<link rel="import" href="../bower_components/paper-badge/paper-badge.html">-->
+<!--<link rel="import" href="../bower_components/paper-card/paper-card.html">-->
+<!--<link rel="import" href="../bower_components/paper-fab/paper-fab.html">-->
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/platinum-sw/platinum-sw-elements.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-app.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-auth.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-document.html">
+<link rel="import" href="our-wedding-planner-icons.html">
+
+<dom-module id="our-wedding-planner-app">
+  <template>
+    <style>
+      :host {
+        --app-primary-color: #4285f4;
+        --app-secondary-color: black;
+
+        display: block;
+      }
+
+      app-header {
+        color: #fff;
+        background-color: var(--app-primary-color);
+      }
+      app-header paper-icon-button {
+        --paper-icon-button-ink-color: white;
+      }
+
+      .drawer-list {
+        margin: 0 20px;
+      }
+
+      .drawer-list a {
+        display: block;
+        padding: 0 16px;
+        text-decoration: none;
+        color: var(--app-secondary-color);
+        line-height: 40px;
+      }
+
+      .drawer-list a.iron-selected {
+        color: black;
+        font-weight: bold;
+      }
+    </style>
+
+    <app-location route="{{route}}"></app-location>
+    <app-route
+        route="{{route}}"
+        pattern="/:page"
+        data="{{routeData}}"
+        tail="{{subroute}}"></app-route>
+
+    <app-drawer-layout force-narrow fullbleed>
+      <!-- Drawer content -->
+      <app-drawer slot="drawer">
+        <app-toolbar>Menu</app-toolbar>
+        <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
+          <a name="about" href="/about">About</a>
+          <a name="planner" href="/planner">Planner</a>
+          <a name="guestlist" href="/guestlist">Guestlist</a>
+        </iron-selector>
+      </app-drawer>
+
+      <!-- Main content -->
+      <app-header-layout has-scrolling-region>
+
+        <app-header condenses reveals effects="waterfall">
+          <app-toolbar>
+            <paper-icon-button icon="our-wedding-planner-icons:menu" drawer-toggle></paper-icon-button>
+            <div main-title>Our Wedding Planner</div>
+          </app-toolbar>
+        </app-header>
+
+        <iron-pages
+            selected="[[page]]"
+            attr-for-selected="name"
+            fallback-selection="view404"
+            role="main">
+          <our-wedding-planner-about name="about"></our-wedding-planner-about>
+          <our-wedding-planner-planner name="planner"></our-wedding-planner-planner>
+          <our-wedding-planner-guestlist name="guestlist"></our-wedding-planner-guestlist>
+          <our-wedding-planner-view404 name="view404"></our-wedding-planner-view404>
+        </iron-pages>
+      </app-header-layout>
+    </app-drawer-layout>
+
+    <div class="signin-view" id="sign-in" hidden>
+      <div class="header">
+        <button on-tap="login" raised hidden$="[[offline]]">Sign in</button>
+        <div hidden$="[[!offline]]" class="offline">Splash offline</div>
+      </div>
+    </div>
+
+    <platinum-sw-register
+      auto-register
+      skip-waiting
+      clients-claim
+      reload-on-install
+      href="/sw-import.js">
+      <platinum-sw-cache
+        default-cache-strategy="networkFirst">
+      </platinum-sw-cache>
+    </platinum-sw-register>
+
+    <firebase-app
+      api-key="AIzaSyAlOA-dMZEbe6Q3ZEOLVBFLWZdNUvu10Vs"
+      auth-domain="our-wedding-planner-ff5f7.firebaseapp.com"
+      database-url="https://our-wedding-planner-ff5f7.firebaseio.com/"
+      messaging-sender-id="185525964309"
+      name="our-wedding-planner"
+      storage-bucket="our-wedding-planner-ff5f7.appspot.com">
+    </firebase-app>
+
+    <firebase-auth
+      app-name="our-wedding-planner"
+      id="googleAuth"
+      on-error="handleError"
+      provider="google"
+      user="{{user}}">
+    </firebase-auth>
+
+    <!--<firebase-document id="profile" path="/users/[[user.uid]]/profile" data="{{profile}}"></firebase-document>-->
+
+  </template>
+
+  <script>
+    class OurWeddingPlannerApp extends Polymer.Element {
+      static get is() { return 'our-wedding-planner-app'; }
+
+      static get config() {
+        return {
+          properties: {
+            offline: {
+              type: Boolean,
+              reflectToAttribute: true,
+              value: false,
+              notify: true
+            },
+            page: {
+              type: String,
+              reflectToAttribute: true,
+              observer: '_pageChanged',
+            },
+            profile: {
+              type: Object,
+              reflectToAttribute: true,
+              notify: true,
+              value: function() {
+                return {};
+              },
+              observer: '_profileChanged'
+            },
+          },
+          observers: [
+            '_autoAuth(user, statusKnown)',
+            '_routePageChanged(routeData.page)',
+          ]
+        }
+      }
+
+      connectedCallback() {
+        super.connectedCallback();
+        this._setOfflineStatus();
+        this._authStateChanged()
+      }
+
+      handleError(error) {
+        console.error(error);
+      }
+
+      _autoAuth(user, statusKnown) {
+        if (statusKnown && !user) {
+          this.$.googleAuth.signInAnonymously();
+        }
+      }
+
+      // _signIn() {
+      //   let google = new firebase.auth.GoogleAuthProvider();
+      //   this.user.linkWithPopup(google);
+      // }
+
+      _signIn() {
+        this.$.googleAuth.signInWithPopup();
+      }
+
+      _signOut() {
+        this.$.googleAuth.signOut();
+      }
+
+      _authStateChanged() {
+        this.$.googleAuth.auth.onAuthStateChanged((user) => {
+          if (!!user) {
+            this.$['sign-in'].hidden = true;
+          } else {
+            this.$['sign-in'].hidden = false;
+          }
+          // console.log('user', user);
+        });
+      }
+
+      _routePageChanged(page) {
+        this.page = page || 'about';
+      }
+
+      _pageChanged(page) {
+        // Load page import on demand. Show 404 page if fails
+        var resolvedPageUrl = this.resolveUrl('our-wedding-planner-' + page + '.html');
+        Polymer.Utils.importHref(resolvedPageUrl, this._pageLoaded, ()=>this._showPage404(), true);
+      }
+
+      _profileChanged(profile) {
+        // console.log('Profile changed', profile);
+      }
+
+      _pageLoaded(page) {
+        // console.log('Page loaded', page);
+      }
+
+      _showPage404() {
+        this.page = 'view404';
+      }
+
+      _setOfflineStatus() {
+        this.offline = navigator.onLine === false;
+
+        window.addEventListener('online', () => {
+          this.offline = false;
+          console.log('this.offline', this.offline);
+        });
+
+        window.addEventListener('offline', () => {
+          this.offline = true;
+          console.log('this.offline', this.offline);
+        });
+
+        // console.log('this.offline', this.offline);
+      }
+    }
+    customElements.define(OurWeddingPlannerApp.is, OurWeddingPlannerApp);
+  </script>
+</dom-module>

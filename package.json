@@ -53,13 +53,14 @@
   },
   "main": "index.html",
   "scripts": {
-    "build": "polymer build",
-    "deploy": "pushd public && polymer build && popd && mv ./public/build ./build && cp -rp ./public/bower_components ./build/bundled/ && cp -rp ./public/bower_components ./build/unbundled/ && firebase deploy",
-    "electron": "electron .",
-    "lint": "eslint . --ext js,html --ignore-path .gitignore",
+    "build": "pushd public && polymer build && popd",
+    "deploy": "pushd public && polymer build && popd && cp -rp ./public/bower_components ./public/build/bundled/ && cp -rp ./public/bower_components ./public/build/unbundled/ && firebase deploy",
+    "deploytest": "pushd public && polymer build && popd && rm -r ./build && mv ./public/build ./ && cp -rp ./public/bower_components ./build/bundled/ && cp -rp ./public/bower_components ./build/unbundled/ && firebase deploy",
+    "electron": "./node_modules/.bin/electron .",
+    "lint": "eslint ./public --ext js,html --ignore-path .gitignore",
     "serve": "pushd public && polymer serve --port 8088 && popd",
     "serve:build": "firebase serve",
     "setup": "pushd public && bower install && popd",
-    "test": "npm run lint && polymer test"
+    "test": "pushd public && npm run lint && polymer test && popd"
   }
 }

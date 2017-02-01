@@ -2,9 +2,12 @@
   "entrypoint": "index.html",
   "shell": "src/our-wedding-planner.html",
   "fragments": [
-    "src/our-wedding-planner-view1.html",
-    "src/our-wedding-planner-view2.html",
-    "src/our-wedding-planner-view3.html",
+    "src/our-wedding-planner-about.html",
+    "src/our-wedding-planner-guestlist.html",
+    "src/our-wedding-planner-listings.html",
+    "src/our-wedding-planner-organiser.html",
+    "src/our-wedding-planner-planner.html",
+    "src/our-wedding-planner-signin.html",
     "src/our-wedding-planner-view404.html"
   ],
   "sourceGlobs": [
@@ -14,6 +17,6 @@
   ],
   "includeDependencies": [
     "manifest.json",
-    "bower_components/webcomponentsjs/webcomponents-lite.min.js"
+    "bower_components/webcomponentsjs/webcomponents-lite.js"
   ]
 }

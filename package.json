@@ -61,6 +61,6 @@
     "serve": "pushd public && polymer serve --port 8088 && popd",
     "serve:build": "firebase serve",
     "setup": "pushd public && bower install && popd",
-    "test": "pushd public && npm run lint && polymer test && popd"
+    "test": "npm run lint && pushd public && polymer test && popd"
   }
 }

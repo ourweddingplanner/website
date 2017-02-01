@@ -13,7 +13,7 @@ node_js:
   - '6'
 before_script:
   - npm install -g bower polymer-cli
-  - bower install
+  - pushd public && bower install && popd
 script:
   - xvfb-run npm test
 after_success:

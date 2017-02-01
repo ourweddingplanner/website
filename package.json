@@ -54,12 +54,12 @@
   "main": "index.html",
   "scripts": {
     "build": "polymer build",
-    "deploy": "polymer build && firebase deploy",
+    "deploy": "pushd public && polymer build && popd && mv ./public/build ./build && firebase deploy",
     "electron": "electron .",
     "lint": "eslint . --ext js,html --ignore-path .gitignore",
     "serve": "pushd public && polymer serve --port 8088 && popd",
     "serve:build": "firebase serve",
-    "setup": "bower install",
+    "setup": "pushd public && bower install && popd",
     "test": "npm run lint && polymer test"
   }
 }

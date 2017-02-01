@@ -11,27 +11,28 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="our-wedding-planner-organiser">
+<dom-module id="our-wedding-planner-privacy">
   <template>
     <style include="shared-styles">
       :host {
-        display: block;
-
-        padding: 10px;
+        /*display: block;*/
+        /*padding: 10px;*/
       }
     </style>
 
+    <img class="hero" src="/images/hero/14871072638_65daf34b72_o.jpg" alt="A newly married couple" />
+
     <div class="card">
-      <div class="circle">3</div>
-      <h1>View Three</h1>
-      <p>Modus commodo minimum eum te, vero utinam assueverit per eu.</p>
-      <p>Ea duis bonorum nec, falli paulo aliquid ei eum.Has at minim mucius aliquam, est id tempor laoreet.Pro saepe pertinax ei, ad pri animal labores suscipiantur.</p>
+      <div class="circle">1</div>
+      <h1>View One</h1>
+      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
+      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
     </div>
   </template>
 
   <script>
-    class OurWeddingPlannerOrganiser extends Polymer.Element {
-      static get is() { return 'our-wedding-planner-organiser'; }
+    class OurWeddingPlannerPrivacy extends Polymer.Element {
+      static get is() { return 'our-wedding-planner-privacy'; }
       static get config() {
         return {
           /* properties, observers meta data */
@@ -45,6 +46,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     }
 
-    customElements.define(OurWeddingPlannerOrganiser.is, OurWeddingPlannerOrganiser);
+    customElements.define(OurWeddingPlannerPrivacy.is, OurWeddingPlannerPrivacy);
   </script>
 </dom-module>

@@ -18,7 +18,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 <link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="our-wedding-planner-listings">
+<dom-module id="our-wedding-planner-suppliers">
   <template>
     <style include="shared-styles">
       :host {
@@ -99,8 +99,8 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    class UniversalShiftListings extends Polymer.Element {
-      static get is() { return 'our-wedding-planner-listings'; }
+    class OurWeddingPlannerSuppliers extends Polymer.Element {
+      static get is() { return 'our-wedding-planner-suppliers'; }
       static get config() {
         return {
           properties: {
@@ -204,6 +204,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     }
 
-    customElements.define(UniversalShiftListings.is, UniversalShiftListings);
+    customElements.define(OurWeddingPlannerSuppliers.is, OurWeddingPlannerSuppliers);
   </script>
 </dom-module>

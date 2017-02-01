@@ -81,10 +81,16 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         <app-toolbar>Menu</app-toolbar>
         <iron-selector selected="[[page]]" attr-for-selected="name" class="drawer-list" role="navigation">
           <a name="about" href="/about">About</a>
-          <a name="planner" href="/planner">Planner</a>
+          <a name="account" href="/account">Account</a>
+          <a name="calendar" href="/calendar">Calendar</a>
           <a name="guestlist" href="/guestlist">Guestlist</a>
+          <a name="help" href="/help">Help</a>
           <a name="listings" href="/listings">Listings</a>
+          <a name="notifications" href="/notifications">Notifications</a>
+          <a name="orgainser" href="/orgainser">Orgainser</a>
+          <a name="privacy" href="/privacy">Privacy</a>
           <a name="signin" href="/signin" hidden$="[[offline]]">Sign In</a>
+          <a name="terms" href="/terms">Terms</a>
         </iron-selector>
       </app-drawer>
 
@@ -109,10 +115,17 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
             fallback-selection="view404"
             role="main">
           <our-wedding-planner-about name="about"></our-wedding-planner-about>
-          <our-wedding-planner-planner name="planner"></our-wedding-planner-planner>
+          <our-wedding-planner-account name="account"></our-wedding-planner-account>
+          <our-wedding-planner-calendar name="calendar"></our-wedding-planner-calendar>
           <our-wedding-planner-guestlist name="guestlist"></our-wedding-planner-guestlist>
-          <our-wedding-planner-listings name="listings"></our-wedding-planner-listings>
+          <our-wedding-planner-help name="help"></our-wedding-planner-help>
+          <our-wedding-planner-notifications name="notifications"></our-wedding-planner-notifications>
+          <our-wedding-planner-organiser name="organiser"></our-wedding-planner-organiser>
+          <our-wedding-planner-privacy name="privacy"></our-wedding-planner-privacy>
           <our-wedding-planner-signin name="signin"></our-wedding-planner-signin>
+          <our-wedding-planner-suppliers name="suppliers"></our-wedding-planner-suppliers>
+          <our-wedding-planner-terms name="terms"></our-wedding-planner-terms>
+          <our-wedding-planner-venues name="venues"></our-wedding-planner-venues>
           <our-wedding-planner-view404 name="view404"></our-wedding-planner-view404>
         </iron-pages>
       </app-header-layout>

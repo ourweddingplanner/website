@@ -9,12 +9,11 @@ addons:
     packages:
       - google-chrome-stable
 node_js:
+  - '6.1'
   - '6'
-  - '5'
-  - '4'
 before_script:
   - npm install -g bower polymer-cli
-  - pushd public && bower install && popd
+  - bower install
 script:
   - xvfb-run npm test
 after_success:

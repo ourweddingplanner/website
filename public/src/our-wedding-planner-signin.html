@@ -9,30 +9,32 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="elements/our-wedding-planner-login-form.html">
 <link rel="import" href="shared-styles.html">
 
-<dom-module id="our-wedding-planner-about">
+<dom-module id="our-wedding-planner-signin">
   <template>
     <style include="shared-styles">
       :host {
-        /*display: block;*/
-        /*padding: 10px;*/
+        display: block;
+
+        padding: 10px;
       }
     </style>
 
-    <img class="hero" src="/images/hero/14871072638_65daf34b72_o.jpg" alt="A newly married couple" />
+    <our-wedding-planner-login-form></our-wedding-planner-login-form>
 
-    <div class="card">
-      <div class="circle">1</div>
-      <h1>View One</h1>
-      <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-      <p>Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Lorem ipsum dolor sit amet, per in nusquam nominavi periculis, sit elit oportere ea.Cu mei vide viris gloriatur, at populo eripuit sit.</p>
+    <div class="signin-view" id="sign-in">
+      <div class="header">
+        <button on-tap="login" raised hidden$="[[offline]]">Sign in</button>
+        <div hidden$="[[!offline]]" class="offline">Splash offline</div>
+      </div>
     </div>
   </template>
 
   <script>
-    class UniversalShiftAbout extends Polymer.Element {
-      static get is() { return 'our-wedding-planner-about'; }
+    class UniversalShiftSignIn extends Polymer.Element {
+      static get is() { return 'our-wedding-planner-signin'; }
       static get config() {
         return {
           /* properties, observers meta data */
@@ -46,6 +48,6 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     }
 
-    customElements.define(UniversalShiftAbout.is, UniversalShiftAbout);
+    customElements.define(UniversalShiftSignIn.is, UniversalShiftSignIn);
   </script>
 </dom-module>

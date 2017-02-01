@@ -9,6 +9,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/app-storage/app-indexeddb-mirror/app-indexeddb-mirror.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-auth.html">
+<link rel="import" href="../bower_components/polymerfire/firebase-query.html"
+<!--<link rel="import" href="../bower_components/note-app-elements/na-elements.html">-->
+<link rel="import" href="../bower_components/paper-button/paper-button.html">
+<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../bower_components/paper-input/paper-input.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="our-wedding-planner-listings">
@@ -22,11 +29,73 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
     </style>
 
     <div class="card">
-      <div class="circle">3</div>
-      <h1>View Three</h1>
+      <div class="circle">4</div>
+      <h1>View Four</h1>
       <p>Modus commodo minimum eum te, vero utinam assueverit per eu.</p>
       <p>Ea duis bonorum nec, falli paulo aliquid ei eum.Has at minim mucius aliquam, est id tempor laoreet.Pro saepe pertinax ei, ad pri animal labores suscipiantur.</p>
     </div>
+
+    <div class="card">
+      <div class="circle">4</div>
+      <h1>Notes</h1>
+      <ul id="notes-list">
+        <template is="dom-repeat" items="[[persistedData]]" as="note">
+          <li>
+            <!--<na-note
+                id$="[[note.$key]]"
+                title="[[note.title]]"
+                body="[[note.body]]"
+                on-tap="edit">
+            </na-note>-->
+            <span class="content">[[note.content]]</span>
+          </li>
+        </template>
+      </ul>
+
+      <paper-fab icon="add" disabled="[[!online]]" on-tap="create"></paper-fab>
+
+      <firebase-document
+          id="document"
+          app-name="notes"
+          path="[[editableNoteId]]"
+          data="{{editableNote}}">
+      </firebase-document>
+
+      <!--<na-editor
+          id="editor"
+          note="{{editableNote}}"
+          on-close="commitChange">
+      </na-editor>-->
+
+      <paper-input id="input" label="Take a note"></paper-input>
+
+      <div id="notes-controls">
+        <paper-button id="add" on-tap="add">Add</paper-button>
+      </div>
+      
+    </div>
+
+    <firebase-auth
+      app-name="our-wedding-planner"
+      id="googleAuth"
+      on-error="handleError"
+      provider="google"
+      user="{{user}}">
+    </firebase-auth>
+
+    <firebase-query
+      app-name="our-wedding-planner"
+      id="query"
+      path="/users/[[user.uid]]/notes"
+      data="{{notes}}">
+    </firebase-query>
+
+    <app-indexeddb-mirror
+        session="[[user.uid]]"
+        key="notes"
+        data="{{notes}}"
+        persisted-data="{{persistedData}}">
+    </app-indexeddb-mirror>
   </template>
 
   <script>
@@ -34,15 +103,105 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       static get is() { return 'our-wedding-planner-listings'; }
       static get config() {
         return {
-          /* properties, observers meta data */
+          properties: {
+            notes: {
+              type: Object
+            },
+            editableNoteId: {
+              type: String,
+              notify: true
+            }
+          }
         }
       }
+
       constructor() {
         super();
       }
+
       connectedCallback() {
         super.connectedCallback();
       }
+
+      add() {
+        // this.shadowRoot.querySelector('#query').ref.push({
+        this.$.query.ref.push({
+          // content: this.shadowRoot.querySelector('#input').value
+          content: this.$.input.value
+        });
+      }
+
+      get isEditable() {
+        return this.online;
+      }
+
+      get notesPath() {
+        return `/notes/${this.user.uid}`;
+      }
+
+      toEditableId(noteId) {
+        return `${this.notesPath}/${noteId}`;
+      }
+
+      edit(event) {
+        if (this.isEditable) {
+          var noteElement = Polymer.dom(event).localTarget;
+          this.editableNoteId = this.toEditableId(noteElement.id);
+          this.$.document.transactionsComplete.then(() => {
+            this.$.editor.open(noteElement);
+          });
+        }
+      }
+
+      create() {
+        if (this.isEditable) {
+          this.editableNoteId = null;
+          this.$.editor.open();
+        }
+      }
+
+      commitChange(event) {
+        var changeCommits;
+        switch (event.detail) {
+          case 'save':
+            changeCommits = this.save();
+            break;
+          case 'delete':
+            changeCommits = this.delete();
+            break;
+          default:
+            changeCommits = Promise.resolve();
+            break;
+        }
+        if (this.$.query && this.$.query.refresh) {
+          changeCommits.then(() => {
+            this.$.query.refresh();
+          });
+        }
+      }
+
+      save() {
+        if (this.$.document.isNew && (this.editableNote.title || this.editableNote.body)) {
+          return this.$.document.save(this.notesPath).then(() => {
+            this.$.document.reset();
+          });
+        }
+        return Promise.resolve();
+      }
+
+      delete() {
+        if (!this.$.document.isNew) {
+          this.$.document.destroy();
+        }
+        return Promise.resolve();
+      }
+
+      signOut() {
+        if (this.$.auth) {
+          this.$.auth.signOut();
+        }
+      }
+
     }
 
     customElements.define(UniversalShiftListings.is, UniversalShiftListings);

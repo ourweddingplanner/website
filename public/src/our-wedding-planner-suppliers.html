@@ -126,10 +126,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       add() {
-        // this.shadowRoot.querySelector('#query').ref.push({
-        this.$.query.ref.push({
-          // content: this.shadowRoot.querySelector('#input').value
-          content: this.$.input.value,
+        this.shadowRoot.querySelector('#query').ref.push({
+        // this.$.query.ref.push({
+          content: this.shadowRoot.querySelector('#input').value,
+          // content: this.$.input.value,
         });
       }
 

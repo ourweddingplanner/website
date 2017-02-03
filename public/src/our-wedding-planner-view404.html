@@ -28,8 +28,26 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
   </template>
 
   <script>
-    Polymer({
-      is: 'our-wedding-planner-view404',
-    });
+    class OurWeddingPlannerView404 extends Polymer.Element {
+      static get is() {
+        return 'our-wedding-planner-view404';
+      }
+      static get config() {
+        return {
+          /* properties, observers meta data */
+        };
+      }
+      constructor() {
+        super();
+      }
+      connectedCallback() {
+        super.connectedCallback();
+      }
+    }
+
+    customElements.define(
+      OurWeddingPlannerView404.is,
+      OurWeddingPlannerView404
+    );
   </script>
 </dom-module>

@@ -100,19 +100,21 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
     class OurWeddingPlannerSuppliers extends Polymer.Element {
-      static get is() { return 'our-wedding-planner-suppliers'; }
+      static get is() {
+        return 'our-wedding-planner-suppliers';
+      }
       static get config() {
         return {
           properties: {
             notes: {
-              type: Object
+              type: Object,
             },
             editableNoteId: {
               type: String,
-              notify: true
-            }
-          }
-        }
+              notify: true,
+            },
+          },
+        };
       }
 
       constructor() {
@@ -127,7 +129,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
         // this.shadowRoot.querySelector('#query').ref.push({
         this.$.query.ref.push({
           // content: this.shadowRoot.querySelector('#input').value
-          content: this.$.input.value
+          content: this.$.input.value,
         });
       }
 
@@ -181,7 +183,10 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
 
       save() {
-        if (this.$.document.isNew && (this.editableNote.title || this.editableNote.body)) {
+        let body = this.editableNote.body;
+        let title = this.editableNote.title;
+
+        if (this.$.document.isNew && (title || body)) {
           return this.$.document.save(this.notesPath).then(() => {
             this.$.document.reset();
           });
@@ -204,6 +209,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
     }
 
-    customElements.define(OurWeddingPlannerSuppliers.is, OurWeddingPlannerSuppliers);
+    customElements.define(
+      OurWeddingPlannerSuppliers.is,
+      OurWeddingPlannerSuppliers
+    );
   </script>
 </dom-module>

@@ -32,11 +32,13 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 
   <script>
     class OurWeddingPlannerAccount extends Polymer.Element {
-      static get is() { return 'our-wedding-planner-account'; }
+      static get is() {
+        return 'our-wedding-planner-account';
+      }
       static get config() {
         return {
           /* properties, observers meta data */
-        }
+        };
       }
       constructor() {
         super();
@@ -46,6 +48,9 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
       }
     }
 
-    customElements.define(OurWeddingPlannerAccount.is, OurWeddingPlannerAccount);
+    customElements.define(
+      OurWeddingPlannerAccount.is,
+      OurWeddingPlannerAccount
+    );
   </script>
 </dom-module>

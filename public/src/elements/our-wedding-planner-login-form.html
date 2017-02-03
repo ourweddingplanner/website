@@ -55,36 +55,38 @@
 </dom-module>
 <script>
 class OurWeddingPlannerLoginForm extends Polymer.Element {
-    static get is() { return 'our-wedding-planner-login-form'; }
+    static get is() {
+      return 'our-wedding-planner-login-form';
+    }
 
       static get config() {
         return {
             properties: {
                 provider: {
                     type: String,
-                    value: 'anonymous'
+                    value: 'anonymous',
                 },
                 message: {
                     type: String,
-                    value: ''
+                    value: '',
                 },
                 email: {
                     type: String,
-                    value: ''
+                    value: '',
                 },
                 password: {
                     type: String,
-                    value: ''
+                    value: '',
                 },
                 user: {
                     type: Object,
-                    value: null
+                    value: null,
                 },
                 statusKnown: {
-                    type: Boolean
-                }
-            }
-        }
+                    type: Boolean,
+                },
+            },
+        };
     }
 
     login() {
@@ -122,7 +124,11 @@ class OurWeddingPlannerLoginForm extends Polymer.Element {
     }
 
     changePasswordHandler(e) {
-      this.$.firebaseLogin.changePassword(this.email, this.password, this.newPassword);
+      this.$.firebaseLogin.changePassword(
+        this.email,
+        this.password,
+        this.newPassword
+      );
     }
 
     resetPasswordHandler(e) {
@@ -173,5 +179,9 @@ class OurWeddingPlannerLoginForm extends Polymer.Element {
       return 'Unknown (checking status...)';
     }
   }
-  customElements.define(OurWeddingPlannerLoginForm.is, OurWeddingPlannerLoginForm);
+
+  customElements.define(
+    OurWeddingPlannerLoginForm.is,
+    OurWeddingPlannerLoginForm
+  );
 </script>

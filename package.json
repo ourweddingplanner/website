@@ -52,15 +52,15 @@
     "jsdoc": "^3.4.3",
     "mocha": "^3.2.0"
   },
-  "main": "index.html",
+  "main": "electron.compile.js",
   "scripts": {
-    "build": "pushd public && polymer build && popd",
-    "deploy": "pushd public && polymer build && popd && cp -rp ./public/bower_components ./public/build/bundled/ && cp -rp ./public/bower_components ./public/build/unbundled/ && firebase deploy",
-    "deploytest": "pushd public && polymer build && popd && rm -r ./build && mv ./public/build ./ && cp -rp ./public/bower_components ./build/bundled/ && cp -rp ./public/bower_components ./build/unbundled/ && firebase deploy",
+    "build": "pushd public && polymer build && popd && npm run workaround:bower:build",
+    "workaround:bower:build": "cp -rp ./public/bower_components ./public/build/bundled/ && cp -rp ./public/bower_components ./public/build/unbundled/",
+    "deploy": "npm run build && firebase deploy",
     "electron": "./node_modules/.bin/electron .",
     "lint": "eslint ./public --ext js,html --ignore-path .gitignore",
     "serve": "pushd public && polymer serve --port 8088 && popd",
-    "serve:build": "firebase serve",
+    "serve:build": "firebase serve build",
     "setup": "pushd public && bower install && popd",
     "test": "npm run lint && pushd public && polymer test && popd"
   }

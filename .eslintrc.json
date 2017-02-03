@@ -1,7 +1,8 @@
 {
   "extends": ["eslint:recommended", "es2015", "google"],
   "env": {
-    "browser": true
+    "browser": true,
+    "node": true
   },
   "plugins": [
     "html"
@@ -12,5 +13,8 @@
   },
   "globals": {
     "Polymer": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
   }
 }

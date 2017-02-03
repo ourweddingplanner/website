@@ -1,0 +1,28 @@
+{
+  "extends": ["eslint:recommended", "es2015", "google"],
+  "env": {
+    "browser": true,
+    "node": true
+  },
+  "plugins": [
+    "html"
+  ],
+  "rules": {
+    "no-var": "off",
+    "new-cap": ["error", { "capIsNewExceptions": ["Polymer"] }],
+    "require-jsdoc": ["warn", {
+      "require": {
+        "FunctionDeclaration": true,
+        "MethodDefinition": false,
+        "ClassDeclaration": false,
+        "ArrowFunctionExpression": false
+      }
+    }]
+  },
+  "globals": {
+    "Polymer": true
+  },
+  "parserOptions": {
+    "sourceType": "module"
+  }
+}

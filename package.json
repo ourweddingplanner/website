@@ -54,14 +54,14 @@
   },
   "main": "electron.compile.js",
   "scripts": {
-    "build": "pushd public && polymer build && popd && npm run workaround:bower:build",
+    "build": "cd ./public && polymer build && cd ~- && npm run workaround:bower:build",
     "workaround:bower:build": "cp -rp ./public/bower_components ./public/build/bundled/ && cp -rp ./public/bower_components ./public/build/unbundled/",
     "deploy": "npm run build && firebase deploy",
     "electron": "./node_modules/.bin/electron .",
     "lint": "eslint ./public --ext js,html --ignore-path .gitignore",
-    "serve": "pushd public && polymer serve --port 8088 && popd",
+    "serve": "cd ./public && polymer serve --port 8088 && cd ~-",
     "serve:build": "firebase serve build",
     "setup": "bower install --config.cwd=./public",
-    "test": "npm run lint && pushd public && polymer test && popd"
+    "test": "npm run lint && cd ./public && polymer test && cd ~-"
   }
 }

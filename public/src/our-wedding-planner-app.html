@@ -7,35 +7,110 @@
 <link rel="import" href="../bower_components/app-layout/app-toolbar/app-toolbar.html">
 <link rel="import" href="../bower_components/app-route/app-location.html">
 <link rel="import" href="../bower_components/app-route/app-route.html">
-<!--<link rel="import" href="../bower_components/google-webfont-loader/google-webfont-loader.html">-->
-<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
-<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
-<!--<link rel="import" href="../bower_components/paper-badge/paper-badge.html">-->
-<!--<link rel="import" href="../bower_components/paper-card/paper-card.html">-->
-<!--<link rel="import" href="../bower_components/paper-fab/paper-fab.html">-->
-<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
-<link rel="import" href="../bower_components/platinum-sw/platinum-sw-elements.html">
 <link rel="import" href="../bower_components/polymerfire/firebase-app.html">
 <link rel="import" href="../bower_components/polymerfire/firebase-auth.html">
 <link rel="import" href="../bower_components/polymerfire/firebase-document.html">
+<link rel="import" href="../bower_components/google-webfont-loader/google-webfont-loader.html">
+<link rel="import" href="../bower_components/iron-pages/iron-pages.html">
+<link rel="import" href="../bower_components/iron-selector/iron-selector.html">
+<!--<link rel="import" href="../bower_components/paper-badge/paper-badge.html">-->
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
+<link rel="import" href="../bower_components/paper-fab/paper-fab.html">
+<link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
+<link rel="import" href="../bower_components/paper-item/paper-item.html">
+<link rel="import" href="../bower_components/paper-listbox/paper-listbox.html">
+<link rel="import" href="../bower_components/paper-styles/color.html">
+<link rel="import" href="../bower_components/platinum-sw/platinum-sw-elements.html">
+<!--<link rel="import" href="../bower_components/mentallyfriendly-selectbox/mentallyfriendly-selectbox.html">-->
 <link rel="import" href="our-wedding-planner-icons.html">
+<link rel="import" href="shared-styles.html">
 
 <dom-module id="our-wedding-planner-app">
   <template>
-    <style>
+    <style include="shared-styles">
       :host {
         --app-primary-color: #ffffff;
-        --app--color: black;
+        --app-secondary-color: #000000;
+        --app-tertiary-color: #9a9a9a;
+/*
+        --app-font-size-base: .75rem;
+        --app-font-size-cta: .875rem;
+        --app-font-size-heading: 1.25rem;
+*/
+        --app-font-size-base: 12px;
+        --app-font-size-cta: 12px;
+        --app-font-size-heading: 14px;
+
+        --app-grid-item-gap: 2rem;
+
+        --app-font-size-module-heading: 28px;
+        --app-font-size-header-heading: 36px;
+        /*--app-grid-item-padding: 1rem;*/
+
+        --app-module: {
+          align-content: flex-end;
+          align-items: flex-end;
+          display: flex;
+          flex-wrap: wrap;
+          padding-bottom: 1rem;
+          padding-left: 2rem;
+          padding-right: 2rem;
+          position: relative;
+        }
+
+        --app-module-contents: {
+          flex-basis: 100%;
+        }
+
+        --app-module-background-image-contents: {
+          color: var(--app-primary-color);
+        }
+
+        --app-module-heading: {
+          font-size: var(--app-font-size-module-heading);
+        }
+
+        --app-header: {
+
+        }
+
+        --app-header-heading: {
+          font-size: var(--app-font-size-header-heading);
+        }
 
         display: block;
+        min-height: 100vh;
+      }
+
+      /*app-drawer-layout {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+      }*/
+
+      iron-pages {
+        @apply --layout-flex;
       }
 
       app-header {
-        color: var(--app-secondary-color);
-        background-color: var(--app-primary-color);
+        @apply --layout-fixed-top;
+        color: var(--app-primary-color);
+        background-color: transparent;
+        z-index: 100;
+
+        --app-header-background-rear-layer: {
+          background-color: var(--paper-purple-a400);
+          color: var(--app-primary-color);
+        };
       }
+
       app-header paper-icon-button {
         --paper-icon-button-ink-color: white;
+      }
+
+      app-toolbar paper-button {
+        font-size: var(--app-font-size-cta);
       }
 
       .drawer-list {
@@ -43,20 +118,103 @@
       }
 
       .drawer-list a {
+        color: var(--app-secondary-color);
         display: block;
+        line-height: 40px;
         padding: 0 16px;
         text-decoration: none;
-        color: var(--app-secondary-color);
-        line-height: 40px;
       }
 
       .drawer-list a.iron-selected {
         color: black;
         font-weight: bold;
       }
+
+      footer {
+        border-top: 1px solid #e5e5e5;
+        display: flex;
+        flex: none;
+        flex-wrap: wrap;
+        justify-content: center;
+        margin-left: var(--app-grid-item-gap);
+        margin-right: var(--app-grid-item-gap);
+        padding-bottom: 2rem;
+        padding-top: 2rem;
+      }
+
+      footer div,
+      footer section {
+        align-items: flex-end;
+        display: flex;
+        flex-basis: 100%;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      footer #legal a {
+        color: var(--app-tertiary-color);
+      }
+
+      footer hr {
+        background-color: #e5e5e5;
+        /*border-top: 1px solid #e5e5e5;*/
+        border: none;
+        display: block;
+        height: 1px;
+        margin-bottom: 3rem;
+        margin-top: 3rem;
+        width: 6rem;
+      }
+
+      footer a {
+        font-size: var(--app-font-size-cta);
+        text-decoration: none;
+        text-transform: uppercase;
+      }
+
+      footer a:focus,
+      footer a:hover {
+        text-decoration: underline;
+      }
+
+      footer h1 {
+        flex-basis: 100%;
+        font-size: var(--app-font-size-heading);
+        /*margin-bottom: 0;*/
+        margin-top: 0;
+        text-align: center;
+      }
+
+      footer a {
+        color: var(--app-secondary-color);
+        padding: 8px 0;
+      }
+
+      footer a:not(:first-child),
+      footer paper-dropdown-menu:not(:first-child) {
+        margin-left: 1rem;
+      }
+
+      footer a:not(:last-child),
+      footer paper-dropdown-menu:not(:last-child) {
+        margin-right: 1rem;
+      }
+
+      /*footer paper-dropdown-menu {
+        --paper-input-container-underline: {
+          display: none;
+        };
+      }*/
+
+      /*
+      footer paper-input-container {
+        --paper-input-container: {
+
+        }
+      }*/
     </style>
 
-    <!--<google-webfont-loader id="webfont-loader" loading={{loading}} fonts="Roboto"></google-webfont-loader>-->
+    <google-webfont-loader id="webfont-loader" loading="{{loading}}" fonts="Josefin Sans:100, Roboto"></google-webfont-loader>
 
     <app-location route="{{route}}"></app-location>
     <app-route
@@ -85,9 +243,10 @@
       </app-drawer>
 
       <!-- Main content -->
-      <app-header-layout has-scrolling-region>
+      <!--<app-header-layout fullbleed has-scrolling-region>-->
+      <app-header-layout fullbleed>
 
-        <app-header condenses reveals effects="waterfall">
+        <app-header reveals>
           <app-toolbar>
             <paper-icon-button icon="our-wedding-planner-icons:menu" drawer-toggle></paper-icon-button>
             <div main-title>Our Wedding Planner</div>
@@ -113,12 +272,55 @@
           <our-wedding-planner-notifications name="notifications"></our-wedding-planner-notifications>
           <our-wedding-planner-organiser name="organiser"></our-wedding-planner-organiser>
           <our-wedding-planner-privacy name="privacy"></our-wedding-planner-privacy>
-          <our-wedding-planner-signin name="signin"></our-wedding-planner-signin>
+          <our-wedding-planner-signin name="signin" offline="[[offline]]"></our-wedding-planner-signin>
           <our-wedding-planner-suppliers name="suppliers"></our-wedding-planner-suppliers>
           <our-wedding-planner-terms name="terms"></our-wedding-planner-terms>
           <our-wedding-planner-venues name="venues"></our-wedding-planner-venues>
           <our-wedding-planner-view404 name="view404"></our-wedding-planner-view404>
         </iron-pages>
+
+        <footer>
+          <div id="general">
+            <a href="/contact">Contact</a>
+            <a href="/help">Help</a>
+
+            <!-- Disabling mentallyfriendly-selectbox as it does not support paper-dropdown-menu's vertical-align or horizontal-align properties -->
+            <!--<mentallyfriendly-selectbox
+              vertical-align="bottom"
+              horizontal-align="left"
+              label="Choose a country"
+              values='["United States", "United Kingdom", "France", "Germany", "Italy", "China", "Canada", "Mexico"]'>
+            </mentallyfriendly-selectbox>-->
+            <!--temporarily replaces mentallyfriendly-selectbox instance-->
+            <paper-dropdown-menu label="Choose a country" vertical-align="bottom" horizontal-align="left">
+              <paper-listbox class="dropdown-content" selected="6">
+                <paper-item>Canada</paper-item>
+                <paper-item>China</paper-item>
+                <paper-item>France</paper-item>
+                <paper-item>Germany</paper-item>
+                <paper-item>Italy</paper-item>
+                <paper-item>Mexico</paper-item>
+                <paper-item>United Kingdom</paper-item>
+                <paper-item>United States</paper-item>
+              </paper-listbox>
+            </paper-dropdown-menu>
+          </div>
+          <hr />
+          <section id="follow">
+            <h1>Follow Our Wedding Planner</h1>
+            <a href="https://www.facebook.com/"><social-media-icons color="#000" icon="facebook" title="facebook">Facebook</social-media-icons></a>
+            <a href="https://twitter.com/"><social-media-icons color="#000" icon="twitter" title="Twitter"></social-media-icons></a>
+            <a href="https://www.instagram.com/"><social-media-icons color="#000" icon="instagram" title="Instagram"></social-media-icons></a>
+            <a href="https://pinterest.com/"><social-media-icons color="#000" icon="pinterest" title="Pinterest"></social-media-icons></a>
+            <a href="https://plus.google.com/"><social-media-icons color="#000" icon="googleplus" title="Google">+</social-media-icons></a>
+            <a href="https://www.tumblr.com/"><social-media-icons color="#000" icon="tumblr" title="Tumblr"></social-media-icons></a>
+          </section>
+          <hr />
+          <div id="legal">
+            <a href="/terms">Legal Terms</a>
+            <a href="/personal">Personal Data</a>
+          </div>
+        </footer>
       </app-header-layout>
     </app-drawer-layout>
 
@@ -195,6 +397,22 @@
         super.connectedCallback();
         this._setOfflineStatus();
         this._authStateChanged();
+        this.headerEffects();
+      }
+
+      headerEffects() {
+        let appHeader = this.shadowRoot.querySelector('app-header');
+        // let appBox = this.shadowRoot.querySelector('app-box');
+        let fadeBackgroundEffect = appHeader.createEffect('fade-background');
+
+        window.addEventListener('scroll', (event) => {
+          console.log('scroll', event);
+          // let progress = appBox.getScrollState().progress;
+          let progress = window.scrollY;
+          let isCondensed = progress > 0.25;
+          fadeBackgroundEffect.run(isCondensed ? 1 : 0);
+          appHeader.shadow = isCondensed;
+        });
       }
 
       handleError(error) {
@@ -223,9 +441,9 @@
       _authStateChanged() {
         this.$.googleAuth.auth.onAuthStateChanged((user) => {
           if (user) {
-            this.$['sign-in'].hidden = true;
+            // this.$['sign-in'].hidden = true;
           } else {
-            this.$['sign-in'].hidden = false;
+            // this.$['sign-in'].hidden = false;
           }
           // console.log('user', user);
         });
@@ -273,6 +491,7 @@
 
         // console.log('this.offline', this.offline);
       }
+
     }
     customElements.define(
       OurWeddingPlannerApp.is,

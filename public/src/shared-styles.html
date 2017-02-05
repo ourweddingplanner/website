@@ -1,21 +1,104 @@
 <link rel="import" href="../bower_components/polymer/polymer.html">
+<!--<link rel="import" href="../bower_components/app-layout/app-grid/app-grid.html">-->
 
 <!-- shared styles for all views -->
 <dom-module id="shared-styles">
   <template>
     <style>
-      .hero {
-        height: auto;
-        object-fit: cover;
-        width: 100%;
+      :host {
+        /*font-size: var(--app-font-size-base);*/
+        /*font-size: 10px;*/
+      }
+
+      header {
+        @apply --app-header;
+        @apply --app-module;
+        margin-bottom: var(--app-grid-item-gap);
+        min-height: 70vh;
       }
 
       @media (max-width: 600px) {
-        .hero {
+        header {
           min-height: 50vh;
         }
       }
 
+      header > * {
+        @apply --app-module-contents;
+      }
+
+      header h1 {
+        @apply --app-header-heading;
+      }
+
+      /*section {
+        @apply --app-module;
+        padding: var(--app-module-padding-length);
+      }*/
+
+      @supports (display: grid) {
+        .grid {
+          display: grid;
+          grid-gap: var(--app-grid-item-gap);
+          margin-left: var(--app-grid-item-gap);
+        }
+
+        .grid.template-1 {
+          grid-template-columns: calc(25% - var(--app-grid-item-gap)) calc(25% - var(--app-grid-item-gap)) calc(25% - var(--app-grid-item-gap)) calc(25% - var(--app-grid-item-gap));
+          grid-template-rows: auto;
+          grid-template-areas: "header header header header"
+                                "row-1-column-1 row-1-column-1 row-1-column-2 row-1-column-2"
+                                "row-2-column-1 row-2-column-1 row-2-column-2 row-2-column-3"
+                                "row-3-column-1 row-3-column-1 row-3-column-2 row-3-column-2"
+                                "row-4-column-1 row-4-column-2 row-4-column-3 row-4-column-3"
+                                "footer footer footer footer";
+        }
+      }
+
+      .grid paper-card {
+        --paper-card-header-image: {
+          height: 16rem;
+        }
+      }
+
+      .grid > section {
+        @apply --app-module;
+        @apply --app-module-heading;
+      }
+
+      .grid section > *{
+        @apply --app-module-contents;
+      }
+
+      .grid section {
+        min-height: 25vw;
+      }
+
+      .image {
+
+      }
+
+      .background-image > * {
+        @apply --app-module-background-image-contents;
+      }
+
+      .background-image h1 {
+        @apply --app-module-background-image-heading;
+        position: relative;
+        z-index: 2;
+      }
+
+      .background-image img {
+        height: 100%;
+        left: 0;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+      }
+
+/*
       .card {
         margin: 24px;
         padding: 16px;
@@ -41,6 +124,20 @@
         margin: 16px 0;
         color: #212121;
         font-size: 22px;
+      }
+*/
+      div[main-title],
+      h1,
+      h2,
+      h3,
+      h4,
+      h5,
+      h6 {
+        /*font-family: 'Josefin Sans', sans-serif;*/
+        font-size: var(--app-font-size-heading);
+        font-weight: 100;
+        /*line-height: 1.5;*/
+        text-transform: uppercase;
       }
     </style>
   </template>

@@ -1,5 +1,6 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
-<link rel="import" href="elements/our-wedding-planner-login-form.html">
+<link rel="import" href="../bower_components/login-fire/login-fire.html">
+<!--<link rel="import" href="elements/our-wedding-planner-login-form.html">-->
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="our-wedding-planner-signin">
@@ -12,13 +13,13 @@
       }
     </style>
 
-    <our-wedding-planner-login-form></our-wedding-planner-login-form>
+    <!--<our-wedding-planner-login-form></our-wedding-planner-login-form>-->
+    <div hidden$="[[offline]]">
+      <login-fire id="sign-in" email-password anonymous twitter google facebook app-name="our-wedding-planner" user="{{user}}" signed-in="{{signedIn}}"></login-fire>
+    </div>
 
-    <div class="signin-view" id="sign-in">
-      <div class="header">
-        <button on-tap="login" raised hidden$="[[offline]]">Sign in</button>
-        <div hidden$="[[!offline]]" class="offline">Splash offline</div>
-      </div>
+    <div hidden$="[[!offline]]">
+      <h1>You are currently offline</h1>
     </div>
   </template>
 

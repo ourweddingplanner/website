@@ -1,0 +1,57 @@
+<link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-styles/shadow.html">
+<link rel="import" href="shared-styles.html">
+
+<dom-module id="our-wedding-planner-figure">
+  <template>
+    <style include="shared-styles">
+      :host {
+        @apply --shadow-elevation-2dp;
+        @apply --app-module;
+      }
+
+      ::slotted(img) {
+        height: 100%;
+        left: 0;
+        object-fit: cover;
+        position: absolute;
+        top: 0;
+        width: 100%;
+        z-index: 1;
+      }
+
+      ::slotted(figcaption) {
+        @apply --app-module-background-image-contents;
+        @apply --app-module-contents;
+        padding-top: 2rem;
+      }
+
+      :host(.white) ::slotted(figcaption) {
+        color: var(--app-primary-color);
+      }
+
+      ::slotted(h1) {
+        /*@apply --app-module-h1;*/
+        @apply --paper-font-title;
+      }
+
+      ::slotted(h2) {
+        /*@apply --app-module-h2;*/
+        @apply --paper-font-subhead;
+      }
+    </style>
+    <slot></slot>
+  </template>
+</dom-module>
+<script>
+class OurWeddingPlannerFigure extends Polymer.Element {
+    static get is() {
+      return 'our-wedding-planner-figure';
+    }
+  }
+
+  customElements.define(
+    OurWeddingPlannerFigure.is,
+    OurWeddingPlannerFigure
+  );
+</script>

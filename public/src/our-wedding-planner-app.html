@@ -14,7 +14,7 @@
 <link rel="import" href="../bower_components/iron-pages/iron-pages.html">
 <link rel="import" href="../bower_components/iron-selector/iron-selector.html">
 <!--<link rel="import" href="../bower_components/paper-badge/paper-badge.html">-->
-<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<!--<link rel="import" href="../bower_components/paper-card/paper-card.html">-->
 <link rel="import" href="../bower_components/paper-dropdown-menu/paper-dropdown-menu.html">
 <link rel="import" href="../bower_components/paper-fab/paper-fab.html">
 <link rel="import" href="../bower_components/paper-icon-button/paper-icon-button.html">
@@ -30,56 +30,77 @@
   <template>
     <style include="shared-styles">
       :host {
+        --app-breakpoint-xs-max: 575px;
+        --app-breakpoint-sm-min: 576px;
+        --app-breakpoint-sm-max: 767px;
+        --app-breakpoint-md-min: 768px;
+        --app-breakpoint-md-max: 991px;
+        --app-breakpoint-lg-min: 992px;
+        --app-breakpoint-lg-max: 1199px;
+        --app-breakpoint-xl-min: 1200px;
+
         --app-primary-color: #ffffff;
         --app-secondary-color: #000000;
         --app-tertiary-color: #9a9a9a;
+
+        --app-font-size-base: .875rem;
+        /*--app-font-size-cta: .875rem;*/
+        --app-font-size-h1: 1.5rem;
+        --app-font-size-h2: 1rem;
+        --app-font-size-h3: .875rem;
+        --app-font-size-h4: .875rem;
+        --app-font-size-h5: .875rem;
+        --app-font-size-h6: .875rem;
 /*
-        --app-font-size-base: .75rem;
-        --app-font-size-cta: .875rem;
-        --app-font-size-heading: 1.25rem;
-*/
         --app-font-size-base: 12px;
         --app-font-size-cta: 12px;
-        --app-font-size-heading: 14px;
-
+        --app-font-size-h1: 14px;
+*/
         --app-grid-item-gap: 2rem;
 
-        --app-font-size-module-heading: 28px;
-        --app-font-size-header-heading: 36px;
+        /*--app-font-size-module-h1: 28px;*/
+        /*--app-font-size-header-h1: 36px;*/
         /*--app-grid-item-padding: 1rem;*/
+
+        --app-module-padding-horizontal: 1rem;
 
         --app-module: {
           align-content: flex-end;
           align-items: flex-end;
           display: flex;
           flex-wrap: wrap;
-          padding-bottom: 1rem;
-          padding-left: 2rem;
-          padding-right: 2rem;
+          /*padding-bottom: 1rem;*/
+          /*padding-left: var(--app-module-padding-horizontal);*/
+          /*padding-right: var(--app-module-padding-horizontal);*/
           position: relative;
         }
 
         --app-module-contents: {
           flex-basis: 100%;
+          margin-top: 0;
+          padding-left: var(--app-module-padding-horizontal);
+          padding-right: var(--app-module-padding-horizontal);
         }
 
         --app-module-background-image-contents: {
-          color: var(--app-primary-color);
+          position: relative;
+          z-index: 2;
         }
-
-        --app-module-heading: {
-          font-size: var(--app-font-size-module-heading);
+/*
+        --app-module-h1: {
+          font-size: var(--app-font-size-h1);
         }
 
         --app-header: {
 
         }
 
-        --app-header-heading: {
-          font-size: var(--app-font-size-header-heading);
+        --app-header-h1: {
+          font-size: var(--app-font-size-h1);
         }
-
+*/
         display: block;
+        /*font-size: var(--app-font-size-base);*/
         min-height: 100vh;
       }
 
@@ -179,7 +200,7 @@
 
       footer h1 {
         flex-basis: 100%;
-        font-size: var(--app-font-size-heading);
+        font-size: var(--app-font-size-h1);
         /*margin-bottom: 0;*/
         margin-top: 0;
         text-align: center;

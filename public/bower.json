@@ -31,7 +31,8 @@
     "vaadin-icons": "^2.0.0",
     "login-fire": "^0.1.4",
     "social-media-icons": "^1.3.1",
-    "mentallyfriendly-selectbox": "^1.0.3"
+    "mentallyfriendly-selectbox": "^1.0.3",
+    "material-design-lite": "^1.3.0"
   },
   "devDependencies": {
     "web-component-tester": "^4.0.0"

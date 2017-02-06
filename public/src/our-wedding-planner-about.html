@@ -1,251 +1,121 @@
 <link rel="import" href="../bower_components/polymer/polymer-element.html">
+<link rel="import" href="../bower_components/paper-card/paper-card.html">
+<link rel="import" href="our-wedding-planner-figure.html">
+<link rel="import" href="our-wedding-planner-grid-1.html">
 <link rel="import" href="shared-styles.html">
 
 <dom-module id="our-wedding-planner-about">
   <template>
-    <style include="shared-styles">
+    <style include="shared-styles our-wedding-planner-grid-1">
       :host {
-        /*display: block;*/
-        /*padding: 10px;*/
-      }
-      
-      .grid > header {
-        grid-area: header;
-      }
 
-      .grid > section:nth-of-type(1) {
-        grid-area: row-1-column-1;
-      }
-
-      .grid > section:nth-of-type(2) {
-        grid-area: row-1-column-2;
-      }
-
-      .grid > section:nth-of-type(3) {
-        grid-area: row-2-column-1;
-      }
-
-      .grid > section:nth-of-type(4) {
-        grid-area: row-2-column-2;
-      }
-
-      .grid > section:nth-of-type(5) {
-        grid-area: row-2-column-3;
-      }
-
-      .grid > section:nth-of-type(6) {
-        grid-area: row-3-column-1;
-      }
-
-      .grid > section:nth-of-type(7) {
-        grid-area: row-3-column-2;
-      }
-
-      .grid > section:nth-of-type(8) {
-        grid-area: row-4-column-1;
-      }
-
-      .grid > section:nth-of-type(9) {
-        grid-area: row-4-column-2;
-      }
-
-      .grid > section:nth-of-type(10) {
-        grid-area: row-4-column-3;
-      }      
+      }    
     </style>
-
-    <header class="background-image">
-      <h1>Our wedding Planner</h1>
+<!--
+    <header>
       <img src="/images/hero/14871072638_65daf34b72_o.jpg" alt="A newly married couple" style="object-position: top;" />
+      <h1>About Our wedding Planner</h1>
+    </header>
+-->
+    <header>
+      <our-wedding-planner-figure class="white">
+        <img src="/images/hero/14871072638_65daf34b72_o.jpg" alt="A newly married couple" style="object-position: top;" />
+        <figcaption>
+          <h1>About Our wedding Planner</h1>
+        </figcaption>
+      </our-wedding-planner-figure>
     </header>
 
-    <div class="grid template-1">
+    <section>
+      <h1>A Wedding Day To Remember</h1>
+      <h2>Lorem ipsum</h2>
+      <p>Lorem ipsum dolor sit amet</p>
+    </section>
 
-      <paper-card heading="Emmental" image="/images/sort/14871072638_65daf34b72_o.jpg" alt="A newly married couple">
-        <div class="card-content">
-          Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
-        </div>
-        <div class="card-actions">
-          <paper-button>Share</paper-button>
-          <paper-button>Explore!</paper-button>
-        </div>
-      </paper-card>
-
-      <section>
-        <h1>A Wedding Day To Remember</h1>
-        <h2>Lorem ipsum</h2>
-        <p>Its the day you've always dreamed of.  Don't spend the day organising.</p>
-      </section>
-
-      <paper-card heading="Emmental" image="/images/sort/43a1216b81fec44483087c45d8040cae.jpg" alt="Emmental">
-        <div class="card-content">
-          Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
-        </div>
-        <div class="card-actions">
-          <paper-button>Share</paper-button>
-          <paper-button>Explore!</paper-button>
-        </div>
-      </paper-card>
-
-      <section class="background-image">
+    <our-wedding-planner-figure class="white">
+      <img src="/images/_sort/331765.jpg" alt="A newly married couple" style="object-position: top;" />
+      <figcaption class="scrim-light">
         <h1>The Wedding You Always Dreamed Of</h1>
         <h2>Lorem ipsum</h2>
         <p>Find a beautiful venue that you and your guests will remember</p>
-        <img src="/images/sort/14871072638_65daf34b72_o.jpg" alt="A newly married couple" />
-      </section>
+      </figcaption>
+    </our-wedding-planner-figure>
 
-      <paper-card heading="Emmental" image="/images/sort/57ef65235de7b$!x900.JPG" alt="Emmental">
-        <div class="card-content">
-          Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
-        </div>
-        <div class="card-actions">
-          <paper-button>Share</paper-button>
-          <paper-button>Explore!</paper-button>
-        </div>
-      </paper-card>
-
-      <paper-card heading="Emmental" image="/images/sort/915de10cff8f74b939bb00cfc9f835f6.jpg" alt="Emmental">
-        <div class="card-content">
-          Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
-        </div>
-        <div class="card-actions">
-          <paper-button>Share</paper-button>
-          <paper-button>Explore!</paper-button>
-        </div>
-      </paper-card>
-
-      <paper-card heading="Emmental" image="http://placehold.it/350x150/FFC107/000000" alt="Emmental">
-        <div class="card-content">
-          Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
-        </div>
-        <div class="card-actions">
-          <paper-button>Share</paper-button>
-          <paper-button>Explore!</paper-button>
-        </div>
-      </paper-card>
-
-      <paper-card heading="Emmental" image="http://placehold.it/350x150/FFC107/000000" alt="Emmental">
-        <div class="card-content">
-          Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
-        </div>
-        <div class="card-actions">
-          <paper-button>Share</paper-button>
-          <paper-button>Explore!</paper-button>
-        </div>
-      </paper-card>
-
-      <paper-card heading="Emmental" image="http://placehold.it/350x150/FFC107/000000" alt="Emmental">
-        <div class="card-content">
-          Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
-        </div>
-        <div class="card-actions">
-          <paper-button>Share</paper-button>
-          <paper-button>Explore!</paper-button>
-        </div>
-      </paper-card>
-
-      <paper-card heading="Emmental" image="http://placehold.it/350x150/FFC107/000000" alt="Emmental">
-        <div class="card-content">
-          Emmentaler or Emmental is a yellow, medium-hard cheese that originated in the area around Emmental, Switzerland. It is one of the cheeses of Switzerland, and is sometimes known as Swiss cheese.
-        </div>
-        <div class="card-actions">
-          <paper-button>Share</paper-button>
-          <paper-button>Explore!</paper-button>
-        </div>
-      </paper-card>
-<!--
-      <section class="background-image">
+    <our-wedding-planner-figure>
+      <img src="/images/_sort/table/cd9b3c6bb76f747049cc3dd465a77d01.jpg" alt="A newly married couple" />
+      <figcaption class="scrim-heavy">
         <h1>The Foundation For A Great Wedding</h1>
         <h2>Lorem ipsum</h2>
         <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-        <img src="/images/sort/14871072638_65daf34b72_o.jpg" alt="A newly married couple" />
-      </section>
+      </figcaption>
+    </our-wedding-planner-figure>
 
-      <section class="background-image">
+    <our-wedding-planner-figure>
+      <img src="/images/_sort/175023507.jpg" alt="A newly married couple" style="object-position: top;" />
+      <figcaption class="scrim-heavy">
         <h1>The Wedding You Always Dreamed Of</h1>
         <h2>Lorem ipsum</h2>
         <p>Find a beautiful venue that you and your guests will remember</p>
-        <img src="/images/sort/14871072638_65daf34b72_o.jpg" alt="A newly married couple" />
-      </section>
+      </figcaption>
+    </our-wedding-planner-figure>
 
-      <section class="image">
+    <our-wedding-planner-figure class="white">
+      <img src="/images/hero/14871072638_65daf34b72_o.jpg" alt="A newly married couple" style="object-position: top;" />
+      <figcaption class="scrim-medium">
         <h1>The Foundation For A Great Wedding</h1>
         <h2>Lorem ipsum</h2>
         <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-        <img src="/images/sort/14871072638_65daf34b72_o.jpg" alt="A newly married couple" />
-      </section>
+      </figcaption>
+    </our-wedding-planner-figure>
 
-      <section class="background-image">
+    <our-wedding-planner-figure class="white">
+      <img src="/images/hero/14871072638_65daf34b72_o.jpg" alt="A newly married couple" style="object-position: top;" />
+      <figcaption class="scrim-medium">
         <h1>The Wedding You Always Dreamed Of</h1>
         <h2>Lorem ipsum</h2>
         <p>Find a beautiful venue that you and your guests will remember</p>
-        <img src="/images/sort/14871072638_65daf34b72_o.jpg" alt="A newly married couple" />
-      </section>
+      </figcaption>
+    </our-wedding-planner-figure>
 
-      <section class="background-image">
-        <h1>The Foundation For A Great Wedding</h1>
-        <h2>Lorem ipsum</h2>
-        <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-        <img src="/images/sort/14871072638_65daf34b72_o.jpg" alt="A newly married couple" />
-      </section>
+    <paper-card heading="Bridal" image="/images/_sort/5815f57606685$!x900.jpg" alt="A newly married couple">
+      <div class="card-content">
+        Rhoncus mi enim pharetra elementum lacus natoque ac habitasse a dui class elementum feugiat lobortis orci scelerisque pulvinar mi a.
+      </div>
+      <div class="card-actions">
+        <paper-button>Share</paper-button>
+        <paper-button>Explore!</paper-button>
+      </div>
+    </paper-card>
 
-      <section class="background-image">
-        <h1>The Wedding You Always Dreamed Of</h1>
-        <h2>Lorem ipsum</h2>
-        <p>Find a beautiful venue that you and your guests will remember</p>
-        <img src="/images/sort/14871072638_65daf34b72_o.jpg" alt="A newly married couple" />
-      </section>
+    <paper-card heading="Bridal" image="/images/_sort/43a1216b81fec44483087c45d8040cae.jpg" alt="Bridal" class="white">
+      <div class="card-content">
+        Rhoncus mi enim pharetra elementum lacus natoque ac habitasse a dui class elementum feugiat lobortis orci scelerisque pulvinar mi a.
+      </div>
+      <div class="card-actions">
+        <paper-button>Share</paper-button>
+        <paper-button>Explore!</paper-button>
+      </div>
+    </paper-card>
 
-      <section class="background-image">
-        <h1>The Foundation For A Great Wedding</h1>
-        <h2>Lorem ipsum</h2>
-        <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-        <img src="/images/sort/14871072638_65daf34b72_o.jpg" alt="A newly married couple" />
-      </section>
+    <paper-card heading="Bridal" image="/images/_sort/57ef65235de7b$!x900.JPG" alt="Bridal">
+      <div class="card-content">
+        Rhoncus mi enim pharetra elementum lacus natoque ac habitasse a dui class elementum feugiat lobortis orci scelerisque pulvinar mi a.
+      </div>
+      <div class="card-actions">
+        <paper-button>Share</paper-button>
+        <paper-button>Explore!</paper-button>
+      </div>
+    </paper-card>
 
-      <section class="background-image">
-        <h1>The Wedding You Always Dreamed Of</h1>
-        <h2>Lorem ipsum</h2>
-        <p>Find a beautiful venue that you and your guests will remember</p>
-        <img src="/images/sort/14871072638_65daf34b72_o.jpg" alt="A newly married couple" />
-      </section>
-
-      <section class="background-image">
-        <h1>The Foundation For A Great Wedding</h1>
-        <h2>Lorem ipsum</h2>
-        <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-        <img src="/images/sort/14871072638_65daf34b72_o.jpg" alt="A newly married couple" />
-      </section>
-
-      <section class="image">
-        <h1>The Wedding You Always Dreamed Of</h1>
-        <h2>Lorem ipsum</h2>
-        <p>Find a beautiful venue that you and your guests will remember</p>
-        <img src="/images/sort/14871072638_65daf34b72_o.jpg" alt="A newly married couple" />
-      </section>
-
-      <section class="image">
-        <h1>The Foundation For A Great Wedding</h1>
-        <h2>Lorem ipsum</h2>
-        <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-        <img src="/images/sort/14871072638_65daf34b72_o.jpg" alt="A newly married couple" />
-      </section>
-
-      <section class="image">
-        <h1>The Wedding You Always Dreamed Of</h1>
-        <h2>Lorem ipsum</h2>
-        <p>Find a beautiful venue that you and your guests will remember</p>
-        <img src="/images/sort/14871072638_65daf34b72_o.jpg" alt="A newly married couple" />
-      </section>
-
-      <section class="image">
-        <h1>The Foundation For A Great Wedding</h1>
-        <h2>Lorem ipsum</h2>
-        <p>Ut labores minimum atomorum pro. Laudem tibique ut has.</p>
-        <img src="/images/sort/14871072638_65daf34b72_o.jpg" alt="A newly married couple" />
-      </section>
--->
-    </div>
+    <paper-card heading="Bridal" image="/images/_sort/915de10cff8f74b939bb00cfc9f835f6.jpg" alt="Bridal">
+      <div class="card-content">
+        Rhoncus mi enim pharetra elementum lacus natoque ac habitasse a dui class elementum feugiat lobortis orci scelerisque pulvinar mi a.
+      </div>
+      <div class="card-actions">
+        <paper-button>Share</paper-button>
+        <paper-button>Explore!</paper-button>
+      </div>
+    </paper-card>
 
   </template>
 

@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<OpenSearchDescription xmlns="http://a9.com/-/spec/opensearch/1.1/">
+  <ShortName>Search Our Wedding Planner</ShortName>
+  <Description>Search Our Wedding Planner</Description>
+  <Url type="text/html" method="get" template="https://ourweddingplanner.online/search/{searchTerms}"/>
+</OpenSearchDescription>

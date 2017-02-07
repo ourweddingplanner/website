@@ -6,8 +6,11 @@
   <template>
     <style include="shared-styles">
       :host {
-        @apply --shadow-elevation-2dp;
         @apply --app-module;
+      }
+
+      :host(:not(.no-shadow)) {
+        @apply --shadow-elevation-2dp;
       }
 
       ::slotted(img) {
@@ -23,21 +26,11 @@
       ::slotted(figcaption) {
         @apply --app-module-background-image-contents;
         @apply --app-module-contents;
-        padding-top: 2rem;
+        padding-top: 4rem;
       }
 
       :host(.white) ::slotted(figcaption) {
         color: var(--app-primary-color);
-      }
-
-      ::slotted(h1) {
-        /*@apply --app-module-h1;*/
-        @apply --paper-font-title;
-      }
-
-      ::slotted(h2) {
-        /*@apply --app-module-h2;*/
-        @apply --paper-font-subhead;
       }
     </style>
     <slot></slot>

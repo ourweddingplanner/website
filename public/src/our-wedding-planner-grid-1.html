@@ -9,40 +9,64 @@
       @supports (display: grid) {
         :host {
           display: grid;
-          grid-gap: var(--app-grid-item-gap);
+          /*grid-gap: var(--app-grid-item-gap);*/
+          grid-row-gap: var(--app-grid-item-gap);
           grid-template-areas: "header header header header"
                                 "row-1-column-1 row-1-column-1 row-1-column-2 row-1-column-2"
                                 "row-2-column-1 row-2-column-1 row-2-column-2 row-2-column-3"
                                 "row-3-column-1 row-3-column-1 row-3-column-2 row-3-column-2"
                                 "row-4-column-1 row-4-column-2 row-4-column-3 row-4-column-3"
+                                "row-5-column-1 row-5-column-1 row-5-column-2 row-5-column-2"
                                 "footer footer footer footer";
-          grid-template-columns: calc(25% - var(--app-grid-item-gap)) calc(25% - var(--app-grid-item-gap)) calc(25% - var(--app-grid-item-gap)) calc(25% - var(--app-grid-item-gap));
+          /*grid-template-columns: calc(25% - var(--app-grid-item-gap)) calc(25% - var(--app-grid-item-gap)) calc(25% - var(--app-grid-item-gap)) calc(25% - var(--app-grid-item-gap));*/
+          grid-template-columns: 25% 25% 25% 25%;
           grid-template-rows: auto;
+          /*margin-left: var(--app-grid-item-gap);*/
+          /*margin-right: var(--app-grid-item-gap);*/
+          /*padding-left: var(--app-grid-item-gap);*/
+          /*padding-right: var(--app-grid-item-gap);*/
+        }
+
+
+        :host > * {
           margin-left: var(--app-grid-item-gap);
+          margin-right: var(--app-grid-item-gap);
         }
 
         /* Header */
 
         :host > header {
           grid-area: header;
+          margin-left: 0;
+          margin-right: 0;
         }
 
         /* Handle portrait and landscape */
 
         /*@media (max-width: var(--app-breakpoint-xs-max)) {*/
         @media (max-width: 575px) {
-          :host > header our-wedding-planner-figure {
+          :host > header {
             min-height: 50vw;
           }
+
+          /*:host > header our-wedding-planner-figure {
+            min-height: 50vw;
+          }*/
         }
 
         /*@media (min-width: var(--app-breakpoint-sm-min)) {*/
         @media (min-width: 576px) {
-          :host > header our-wedding-planner-figure {
+          :host > header {
             max-height: 80vw;
             min-height: 40vw;
             height: 75vh;
           }
+
+          /*:host > header our-wedding-planner-figure {
+            max-height: 80vw;
+            min-height: 40vw;
+            height: 75vh;
+          }*/
         }
 
         /* Figure */
@@ -77,6 +101,22 @@
           }
         }
 
+        :host > section {
+          align-content: flex-end;
+          align-items: flex-end;
+          display: flex;
+          flex-wrap: wrap;
+        }
+
+        :host > section > * {
+          flex-basis: 100%;
+          margin-top: 0;
+        }
+
+        :host > section > p {
+          column-count: 2
+        }
+
         :host > our-wedding-planner-figure:nth-of-type(1) {
           grid-area: row-1-column-1;
         }
@@ -86,18 +126,26 @@
         }
 
         :host > our-wedding-planner-figure:nth-of-type(3) {
-          grid-area: row-2-column-1;
-        }
-
-        :host > our-wedding-planner-figure:nth-of-type(4) {
           grid-area: row-3-column-1;
         }
 
-        :host > our-wedding-planner-figure:nth-of-type(5) {
+        :host > our-wedding-planner-figure:nth-of-type(4) {
           grid-area: row-3-column-2;
         }
 
+        :host > our-wedding-planner-figure:nth-of-type(5) {
+          grid-area: row-4-column-3;
+        }
+
         :host > our-wedding-planner-figure:nth-of-type(6) {
+          grid-area: row-5-column-1;
+        }
+
+        :host > section:nth-of-type(1) {
+          grid-area: row-2-column-1;
+        }
+
+        :host > section:nth-of-type(2) {
           grid-area: row-4-column-3;
         }
 

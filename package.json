@@ -54,14 +54,15 @@
   },
   "main": "electron.compile.js",
   "scripts": {
-    "build": "cd ./public && polymer build && cd ~- && npm run workaround:bower:build",
-    "workaround:bower:build": "cp -rp ./public/bower_components ./public/build/bundled/ && cp -rp ./public/bower_components ./public/build/unbundled/",
-    "deploy": "npm run build && firebase deploy",
-    "electron": "./node_modules/.bin/electron .",
+    "build:native": "./node_modules/.bin/electron .",
+    "build:web": "cd ./public && polymer build && cd ~- && npm run workaround:bower:build",
+    "deploy:web:code": "npm run build:web && firebase deploy",
+    "deploy:web:assets": "gsutil -m cp -n -r public/images gs://staging.our-wedding-planner-ff5f7.appspot.com",
     "lint": "eslint ./public --ext js,html --ignore-path .gitignore",
     "serve": "cd ./public && polymer serve --port 8088 && cd ~-",
     "serve:build": "firebase serve build",
     "setup": "bower install --config.cwd=./public",
-    "test": "npm run lint && cd ./public && polymer test && cd ~-"
+    "test": "npm run lint && cd ./public && polymer test && cd ~-",
+    "workaround:bower:build": "cp -rp ./public/bower_components ./public/build/bundled/ && cp -rp ./public/bower_components ./public/build/unbundled/"
   }
 }

@@ -43,6 +43,8 @@
         --app-secondary-color: #000000;
         --app-tertiary-color: #9a9a9a;
 
+        --app-toolbar-font-size: 1rem;
+
         --app-font-size-base: .875rem;
         /*--app-font-size-cta: .875rem;*/
         --app-font-size-h1: 1.5rem;
@@ -119,6 +121,7 @@
         @apply --layout-fixed-top;
         color: var(--app-primary-color);
         background-color: transparent;
+        font-size: var(--app-font-size-base);
         z-index: 100;
 
         --app-header-background-rear-layer: {
@@ -131,9 +134,9 @@
         --paper-icon-button-ink-color: white;
       }
 
-      app-toolbar paper-button {
+      /*app-toolbar paper-button {
         font-size: var(--app-font-size-cta);
-      }
+      }*/
 
       .drawer-list {
         margin: 0 20px;

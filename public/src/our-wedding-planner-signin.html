@@ -8,8 +8,24 @@
     <style include="shared-styles">
       :host {
         display: block;
+        /*display: flex;*/
+        /*flex-wrap: wrap;*/
+        /*justify-content: center;*/
+      }
+
+      /*:host > div {
+        flex-basis: 100%;
+      }*/
+
+      login-fire {
+        padding-bottom: 4rem;
+        padding-top: 4rem;
       }
     </style>
+
+    <header class="white" style="background-image: url(https://storage.googleapis.com/staging.our-wedding-planner-ff5f7.appspot.com/images/hero/14871072638_65daf34b72_o.jpg)">
+      <h1>Sign In</h1>
+    </header>
 
     <!--<our-wedding-planner-login-form></our-wedding-planner-login-form>-->
     <div hidden$="[[offline]]">

@@ -89,8 +89,9 @@
           z-index: 2;
         }
 
-        --app-header: {
+        --app-page-header: {
           background-attachment: fixed;
+          background-repeat: no-repeat;
           background-size: cover;
         }
 /*
@@ -128,6 +129,18 @@
           background-color: var(--paper-grey-900);
           color: var(--app-primary-color);
         };
+      }
+
+      app-header div[main-title] {
+        display: flex;
+      }
+
+      app-header div[main-title] img {
+        /*background-image: url('/images/branding/logotype-white.svg');*/
+        /*background-size: contain;*/
+        height: 100%;
+        /*text-indent: -100vw;*/
+        width: auto;
       }
 
       app-header paper-icon-button {
@@ -237,6 +250,11 @@
 
         }
       }*/
+
+      footer img {
+        height: 1rem;
+        padding-top: 2rem;
+      }
     </style>
 
     <google-webfont-loader id="webfont-loader" loading="{{loading}}" fonts="Josefin Sans:100, Roboto"></google-webfont-loader>
@@ -274,7 +292,9 @@
         <app-header reveals>
           <app-toolbar>
             <paper-icon-button icon="our-wedding-planner-icons:menu" drawer-toggle></paper-icon-button>
-            <div main-title>Our Wedding Planner</div>
+            <div main-title>
+              <img src="/images/branding/logotype-white.svg" alt="Our Wedding Planner logo" title="Our Wedding Planner" />
+            </div>
             <paper-icon-button icon="our-wedding-planner-icons:notifications"></paper-icon-button>
             <paper-icon-button icon="our-wedding-planner-icons:schedule"></paper-icon-button>
             <paper-icon-button icon="our-wedding-planner-icons:info"></paper-icon-button>
@@ -345,6 +365,7 @@
             <a href="/terms">Legal Terms</a>
             <a href="/personal">Personal Data</a>
           </div>
+          <img src="/images/branding/icon-black.svg" alt="Our Wedding Planner icon" title="Our Wedding Planner" />
         </footer>
       </app-header-layout>
     </app-drawer-layout>
